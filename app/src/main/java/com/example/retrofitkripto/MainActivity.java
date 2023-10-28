@@ -10,5 +10,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //https://raw.githubusercontent.com/atilsamancioglu/K21-JSONDataSet/master/crypto.json
     }
+    
 }
