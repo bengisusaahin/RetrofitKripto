@@ -1,6 +1,7 @@
 package com.example.retrofitkripto.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
@@ -24,11 +25,14 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<CryptoModel> cryptoModels;
     private String BASE_URL = "https://raw.githubusercontent.com/";
     Retrofit retrofit;
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //https://raw.githubusercontent.com/atilsamancioglu/K21-JSONDataSet/master/crypto.json
+
+        recyclerView = findViewById(R.id.recyclerView);
 
         //Retrofit & JSON
 
