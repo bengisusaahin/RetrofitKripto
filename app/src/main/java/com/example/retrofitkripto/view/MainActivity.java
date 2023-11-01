@@ -1,11 +1,13 @@
 package com.example.retrofitkripto.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
 import com.example.retrofitkripto.R;
+import com.example.retrofitkripto.adapter.RecyclerViewAdapter;
 import com.example.retrofitkripto.model.CryptoModel;
 import com.example.retrofitkripto.service.CryptoAPI;
 import com.google.gson.Gson;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private String BASE_URL = "https://raw.githubusercontent.com/";
     Retrofit retrofit;
     RecyclerView recyclerView;
+    RecyclerViewAdapter recyclerViewAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,11 +60,16 @@ public class MainActivity extends AppCompatActivity {
                     List<CryptoModel> responseList = response.body();
                     cryptoModels = new ArrayList<>(responseList);
 
-                    for (CryptoModel cryptoModel : cryptoModels){
-                        System.out.println(cryptoModel.currency);
-                        System.out.println(cryptoModel.price);
+                    //RecyclerView
+                    recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                    recyclerViewAdapter = new RecyclerViewAdapter(cryptoModels);
+                    recyclerView.setAdapter(recyclerViewAdapter);
 
-                    }
+//                    for (CryptoModel cryptoModel : cryptoModels){
+//                        System.out.println(cryptoModel.currency);
+//                        System.out.println(cryptoModel.price);
+//
+//                    }
                 }
             }
 
